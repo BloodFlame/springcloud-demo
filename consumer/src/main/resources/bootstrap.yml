@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: msc-consumer
+  cloud:
+    config:
+      uri: http://spring-cloud-config.com:9999
+      label: master
+      name: application-consumer-config
+      profile: local

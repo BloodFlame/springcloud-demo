@@ -3,8 +3,11 @@ package com.ydm.consumer.controller.impl;
 import com.ydm.consumer.controller.DepartmentController;
 import com.ydm.consumer.domain.Department;
 import com.ydm.consumer.service.DepartmentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,7 +15,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/department")
+@Slf4j
+@RefreshScope
 public class DepartmentControllerImpl implements DepartmentController {
+    @Value("${info.user}")
+    private String admin_user;
+
     @Autowired
     private DepartmentService service;
 
@@ -52,6 +60,7 @@ public class DepartmentControllerImpl implements DepartmentController {
     @GetMapping("/list")
     @Override
     public List<Department> listDepartment() {
+        log.debug(admin_user);
         return service.listAllDepartments();
     }
 

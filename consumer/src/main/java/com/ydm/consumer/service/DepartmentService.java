@@ -1,12 +1,15 @@
 package com.ydm.consumer.service;
 
 import com.ydm.consumer.domain.Department;
+import com.ydm.consumer.service.fallback.DepartmentServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient("msc-provider")
+@Service
+@FeignClient(value = "msc-provider", fallback = DepartmentServiceFallback.class)
 @RequestMapping("/provider/department")
 public interface DepartmentService {
     @PostMapping("/add")
