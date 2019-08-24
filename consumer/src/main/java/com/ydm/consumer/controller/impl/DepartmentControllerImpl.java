@@ -60,7 +60,7 @@ public class DepartmentControllerImpl implements DepartmentController {
     @GetMapping("/list")
     @Override
     public List<Department> listDepartment() {
-        log.debug(admin_user);
+        log.info(admin_user);
         return service.listAllDepartments();
     }
 

@@ -20,11 +20,8 @@ spring:
       enabled: true
   application:
     name: config-center
-  rabbitmq:
-    host: 192.168.99.100
-    port: 5672
-    username: guest
-    password: guest
+  kafka:
+    bootstrap-servers: http://192.168.99.100:9092
 
 eureka:
   client:

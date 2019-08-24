@@ -22,6 +22,6 @@ public class RestTemplateConfig {
 
     @Bean
     public IRule loadBanlanceRule(){
-        return new RoundRobinRule();
+        return new RandomRule();
     }
 }

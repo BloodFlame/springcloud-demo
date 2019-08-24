@@ -1,7 +1,15 @@
 spring:
+  application:
+    name: msc-provider
   cloud:
     config:
       uri: http://spring-cloud-config.com:9999
       label: master
       name: application-provider-config
       profile: local
+eureka:
+  instance:
+    instance-id: msc-provider-9010
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka

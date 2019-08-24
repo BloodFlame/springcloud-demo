@@ -5,6 +5,7 @@ import com.ydm.provider.domain.Department;
 import com.ydm.provider.domain.DepartmentExample;
 import com.ydm.provider.exception.NotFoundDepartmentException;
 import com.ydm.provider.service.DepartmentService;
+import lombok.extern.slf4j.Slf4j;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@Slf4j
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
@@ -51,6 +53,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public List<Department> listAllDepartments() {
+        log.info("list--");
         DepartmentExample departmentExample = new DepartmentExample();
         departmentExample.setOrderByClause("id desc");
         return departmentMapper.selectByExample(departmentExample);
