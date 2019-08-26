@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: msc-zuul
+
+eureka:
+  instance:
+    instance-id: msc-zuul
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka
+zuul:
+  routes:
+    msc-consumer: /consumer/**
+  #  prefix: "api"
+  #  strip-prefix: false
+  #  prefix: "ydm"
+  ignored-services: "*"
+  prefix: /api
+
+logging:
+  level:
+    root: info
